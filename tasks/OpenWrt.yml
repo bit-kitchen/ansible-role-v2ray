@@ -14,12 +14,12 @@
 - name: Add opkg feeds
   lineinfile:
     path: /etc/opkg/customfeeds.conf
-    regex: '^src/gz {{item.name}} '
-    line: src/gz {{item.name}} {{item.url}}
+    regex: '^src/gz {{ item.name }} '
+    line: src/gz {{ item.name }} {{ item.url }}
   when: item.enabled|default(True)
   with_items:
   - name: kuoruan_packages
-    url: http://openwrt.kuoruan.net/packages/releases/{{architecture.stdout}}
+    url: http://openwrt.kuoruan.net/packages/releases/{{ architecture.stdout }}
   - name: kuoruan_universal
     url: http://openwrt.kuoruan.net/packages/releases/all
     enabled: '{{ luci }}'
