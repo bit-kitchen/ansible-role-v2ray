@@ -1,0 +1,45 @@
+---
+- name: opkg add kuoruan-public.key
+  shell: wget -O kuoruan-public.key http://openwrt.kuoruan.net/packages/public.key && opkg-key add kuoruan-public.key
+  args:
+    chdir: /tmp
+    creates: /etc/opkg/keys/628987e0831fe551
+
+- name: Get architecture
+  shell: . /etc/openwrt_release; echo $DISTRIB_ARCH
+  register: architecture
+  changed_when: no
+  check_mode: no
+
+- name: Add opkg feeds
+  lineinfile:
+    path: /etc/opkg/customfeeds.conf
+    regex: '^src/gz {{item.name}} '
+    line: src/gz {{item.name}} {{item.url}}
+  when: item.enabled|default(True)
+  with_items:
+  - name: kuoruan_packages
+    url: http://openwrt.kuoruan.net/packages/releases/{{architecture.stdout}}
+  - name: kuoruan_universal
+    url: http://openwrt.kuoruan.net/packages/releases/all
+    enabled: '{{ luci }}'
+
+- name: opkg update
+  command: opkg update
+
+- name: Install v2ray
+  opkg:
+    name: '{{ item.name }}'
+    state: '{{ item.state | default("present") }}'
+  when: item.enabled|default(True)
+  with_items:
+  - name: 'v2ray-core{{ "-mini" if minimal else "" }}'
+  - name: dnsmasq
+    state: absent
+    enabled: '{{ luci }}'
+  - name: dnsmasq-full
+    enabled: '{{ luci }}'
+  - name: luci-compat
+    enabled: '{{ luci }}'
+  - name: luci-app-v2ray
+    enabled: '{{ luci }}'

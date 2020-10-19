@@ -1,0 +1,6 @@
+---
+- name: Install v2ray
+  pacman:
+    name: v2ray
+    state: latest
+    update_cache: yes
