@@ -4,3 +4,11 @@
     name: v2ray
     state: latest
     update_cache: yes
+
+- name: Copy V2Ray config
+  copy:
+    src: "{{ v2ray_config }}"
+    dest: "{{ v2ray_config_target | default(_v2ray_config_target, true) }}"
+    mode: "0644"
+    backup: yes
+  when: v2ray_config is defined

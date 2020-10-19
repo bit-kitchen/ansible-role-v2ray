@@ -2,7 +2,7 @@ galaxy_info:
   author: bit_kitchen
   role_name: v2ray
 
-  description: Install V2Ray
+  description: Install V2Ray and optionally copy config file
   license: MIT
 
   min_ansible_version: 2.4

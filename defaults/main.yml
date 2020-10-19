@@ -1,4 +1,7 @@
 ---
+#v2ray_config: ""         # V2Ray config file to copy to remote machine
+#v2ray_config_target: ""  # V2Ray config path on remote machine
+
 # OpenWrt
 luci: yes     # Whether to add luci support
 minimal: no   # Yes for v2ray-core-mini, no for v2ray-core

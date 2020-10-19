@@ -1,4 +1,7 @@
 ---
+- name: Include OpenWrt variables
+  include_vars: OpenWrt.yml
+
 - name: opkg add kuoruan-public.key
   shell: wget -O kuoruan-public.key http://openwrt.kuoruan.net/packages/public.key && opkg-key add kuoruan-public.key
   args:
@@ -43,3 +46,11 @@
     enabled: '{{ luci }}'
   - name: luci-app-v2ray
     enabled: '{{ luci }}'
+
+- name: Copy V2Ray config
+  copy:
+    src: "{{ v2ray_config }}"
+    dest: "{{ v2ray_config_target | default(_v2ray_config_target, true) }}"
+    mode: "0600"
+    backup: yes
+  when: v2ray_config is defined
