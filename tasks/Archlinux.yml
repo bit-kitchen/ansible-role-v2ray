@@ -1,5 +1,5 @@
 ---
-- name: Install v2ray
+- name: Install V2Ray
   pacman:
     name: v2ray
     state: latest

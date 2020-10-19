@@ -30,7 +30,7 @@
 - name: opkg update
   command: opkg update
 
-- name: Install v2ray
+- name: Install V2Ray
   opkg:
     name: '{{ item.name }}'
     state: '{{ item.state | default("present") }}'
