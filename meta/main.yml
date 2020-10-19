@@ -7,6 +7,15 @@ galaxy_info:
 
   min_ansible_version: 2.4
 
+  # https://galaxy.ansible.com/api/v1/platforms/
+  platforms:
+  - name: ArchLinux
+    versions:
+    - any
+  - name: GenericLinux
+    versions:
+    - any
+
   galaxy_tags:
   - openwrt
   - v2ray
