@@ -1,6 +1,13 @@
 ansible-role-v2ray
 ==================
 
+[![Ansible Role: bit_kitchen.v2ray](https://img.shields.io/ansible/role/51339.svg)](https://galaxy.ansible.com/bit_kitchen/v2ray)
+[![Build Status: bit-kitchen/ansible-role-v2ray](https://travis-ci.org/bit-kitchen/ansible-role-v2ray.svg?branch=master)](https://travis-ci.org/bit-kitchen/ansible-role-v2ray)
+
+```sh
+ansible-galaxy install bit_kitchen.v2ray
+```
+
 An Ansible role that installs V2Ray on Arch Linux or OpenWrt.
 
 Requirements
