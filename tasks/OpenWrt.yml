@@ -54,3 +54,14 @@
     mode: "0600"
     backup: yes
   when: v2ray_config is defined
+
+- name: Install libustream for CHNRoute and GFWList update
+  block:
+  - name: Install libustream-openssl for CHNRoute and GFWList update
+    opkg:
+      name: libustream-openssl
+  rescue:
+  - name: Install libustream-mbedtls for CHNRoute and GFWList update
+    opkg:
+      name: libustream-mbedtls
+  when: not minimal
