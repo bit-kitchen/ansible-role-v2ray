@@ -1,2 +1,5 @@
 ---
 _v2ray_config_target: /etc/config/v2ray
+_libustream_suffix: "{{ '20150806' if ansible_distribution_major_version == '19' else '' }}"
+_libustream_openssl: libustream-openssl{{ _libustream_suffix }}
+_libustream_mbedtls: libustream-mbedtls{{ _libustream_suffix }}
