@@ -11,4 +11,5 @@
     dest: "{{ v2ray_config_target | default(_v2ray_config_target, true) }}"
     mode: "0644"
     backup: yes
+  notify: restart v2ray
   when: v2ray_config is defined

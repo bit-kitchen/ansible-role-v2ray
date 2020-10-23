@@ -4,3 +4,5 @@
   gather_facts: yes
   roles:
     - role: ../..
+      #v2ray_config: config.json
+      #v2ray_config_target: /etc/v2ray/config.json

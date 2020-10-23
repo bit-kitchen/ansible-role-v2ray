@@ -54,6 +54,7 @@
     mode: "0600"
     backup: yes
   when: v2ray_config is defined
+  notify: restart v2ray
 
 - name: Install libustream for CHNRoute and GFWList update
   block:
