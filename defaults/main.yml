@@ -1,4 +1,6 @@
 ---
+v2ray_latest: yes         # Whether to upgrade V2Ray if already installed
+
 #v2ray_config: ""         # V2Ray config file to copy to remote machine
 #v2ray_config_target: ""  # V2Ray config path on remote machine
 

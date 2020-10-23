@@ -47,6 +47,12 @@
   - name: luci-app-v2ray
     enabled: '{{ luci }}'
 
+- name: Ensure V2Ray is latest
+  command: opkg upgrade v2ray-core{{ "-mini" if minimal else "" }} luci-app-v2ray
+  register: _opkg_upgrade
+  changed_when: _opkg_upgrade.stdout != ""
+  when: v2ray_latest
+
 - name: Copy V2Ray config
   copy:
     src: "{{ v2ray_config }}"

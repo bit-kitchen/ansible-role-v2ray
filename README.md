@@ -20,6 +20,7 @@ Role Variables
 
 Variable            | Default   | Comment
 ------------------- | --------- | -------
+v2ray_latest        | yes       | Whether to upgrade V2Ray if already installed
 v2ray_config        | undefined | V2Ray config file to copy to remote machine
 v2ray_config_target | Arch Linux: `/etc/v2ray/config.json` <br> OpenWrt: `/etc/config/v2ray` | V2Ray config path on remote machine
 **OpenWrt Specific variables**  |

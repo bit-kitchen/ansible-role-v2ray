@@ -2,7 +2,7 @@
 - name: Install V2Ray
   pacman:
     name: v2ray
-    state: latest
+    state: "{{ 'latest' if v2ray_latest else 'present' }}"
     update_cache: yes
 
 - name: Copy V2Ray config
