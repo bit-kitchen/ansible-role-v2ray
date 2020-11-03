@@ -4,6 +4,7 @@
     name: v2ray
     state: "{{ 'latest' if v2ray_latest else 'present' }}"
     update_cache: yes
+  notify: restart v2ray
 
 - name: Copy V2Ray config
   copy:
@@ -13,3 +14,8 @@
     backup: yes
   notify: restart v2ray
   when: v2ray_config is defined
+
+- name: Enable V2Ray service
+  service:
+    name: v2ray
+    enabled: yes
