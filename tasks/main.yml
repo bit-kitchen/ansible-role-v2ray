@@ -1,3 +1,3 @@
 ---
-- name: Include tasks for {{ ansible_distribution }}
-  include_tasks: "{{ ansible_distribution }}.yml"
+- name: Include tasks for {{ ansible_os_family }}
+  include_tasks: "{{ ansible_os_family }}.yml"

@@ -1,6 +1,6 @@
 ---
 - name: Include OpenWrt variables
-  include_vars: OpenWrt.yml
+  include_vars: OpenWRT.yml
 
 - name: opkg add kuoruan-public.key
   shell: wget -O kuoruan-public.key http://openwrt.kuoruan.net/packages/public.key && opkg-key add kuoruan-public.key
