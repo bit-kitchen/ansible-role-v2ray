@@ -26,9 +26,11 @@
   - name: kuoruan_universal
     url: http://openwrt.kuoruan.net/packages/releases/all
     enabled: '{{ luci }}'
+  register: opkg_feeds
 
 - name: opkg update
   command: opkg update
+  when: opkg_update or opkg_feeds.changed
 
 - name: Install V2Ray
   opkg:

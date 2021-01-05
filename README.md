@@ -26,6 +26,7 @@ v2ray_config_target | Arch Linux: `/etc/v2ray/config.json` <br> OpenWrt: `/etc/c
 **OpenWrt Specific variables**  |
 luci                | yes       | Whether to add luci support
 minimal             | no        | `yes` for *v2ray-core-mini*, `no` for *v2ray-core*
+opkg_update         | yes       | Whether to run `opkg update`
 
 Dependencies
 ------------
