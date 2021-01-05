@@ -34,13 +34,15 @@
   opkg:
     name: '{{ item.name }}'
     state: '{{ item.state | default("present") }}'
+    force: '{{ item.force | default(omit) }}'
   when: item.enabled|default(True)
   with_items:
   - name: 'v2ray-core{{ "-mini" if minimal else "" }}'
+  - name: dnsmasq-full
+    enabled: '{{ luci }}'
+    force: overwrite
   - name: dnsmasq
     state: absent
-    enabled: '{{ luci }}'
-  - name: dnsmasq-full
     enabled: '{{ luci }}'
   - name: luci-compat
     enabled: '{{ luci }}'
