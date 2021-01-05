@@ -3,7 +3,7 @@
   include_vars: OpenWRT.yml
 
 - name: opkg add kuoruan-public.key
-  shell: wget -O kuoruan-public.key http://openwrt.kuoruan.net/packages/public.key && opkg-key add kuoruan-public.key
+  shell: wget -O kuoruan-public.key http://openwrt.kuoruan.net/packages/public.key && opkg-key add kuoruan-public.key && rm kuoruan-public.key
   args:
     chdir: /tmp
     creates: /etc/opkg/keys/628987e0831fe551
