@@ -32,17 +32,18 @@
   command: opkg update
   when: opkg_update or opkg_feeds.changed
 
+- name: Install dnsmasq-full
+  opkg:
+    name: dnsmasq-full
+    force: overwrite
+
 - name: Install V2Ray
   opkg:
     name: '{{ item.name }}'
     state: '{{ item.state | default("present") }}'
-    force: '{{ item.force | default(omit) }}'
   when: item.enabled|default(True)
   with_items:
   - name: 'v2ray-core{{ "-mini" if minimal else "" }}'
-  - name: dnsmasq-full
-    enabled: '{{ luci }}'
-    force: overwrite
   - name: dnsmasq
     state: absent
     enabled: '{{ luci }}'
