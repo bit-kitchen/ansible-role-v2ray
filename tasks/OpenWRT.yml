@@ -31,6 +31,8 @@
 - name: opkg update
   command: opkg update
   when: opkg_update or opkg_feeds.changed
+  register: command_opkg_update
+  failed_when: command_opkg_update.rc != 0
 
 - name: Install dnsmasq-full
   opkg:
