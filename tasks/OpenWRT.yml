@@ -3,7 +3,7 @@
   include_vars: OpenWRT.yml
 
 - name: opkg add kuoruan-public.key
-  shell: wget -O kuoruan-public.key http://openwrt.kuoruan.net/packages/public.key && opkg-key add kuoruan-public.key && rm kuoruan-public.key
+  shell: wget -O kuoruan-public.key {{_http_protocol}}://openwrt.kuoruan.net/packages/public.key && opkg-key add kuoruan-public.key && rm kuoruan-public.key
   args:
     chdir: /tmp
     creates: /etc/opkg/keys/628987e0831fe551
@@ -22,9 +22,9 @@
   when: item.enabled|default(True)
   with_items:
   - name: kuoruan_packages
-    url: http://openwrt.kuoruan.net/packages/releases/{{ architecture.stdout }}
+    url: "{{_http_protocol}}://openwrt.kuoruan.net/packages/releases/{{ architecture.stdout }}"
   - name: kuoruan_universal
-    url: http://openwrt.kuoruan.net/packages/releases/all
+    url: "{{_http_protocol}}://openwrt.kuoruan.net/packages/releases/all"
     enabled: '{{ luci }}'
   register: opkg_feeds
 
